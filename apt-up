@@ -1,0 +1,14 @@
+#!/usr/bin/fish
+if test (id -u) != 0
+    sudo (status filename)
+    exit
+end
+begin
+    echo Updating package list…
+    apt update
+end
+and begin
+    echo Updating packages…
+    apt upgrade
+end
+and echo Done!
